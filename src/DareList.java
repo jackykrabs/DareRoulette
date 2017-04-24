@@ -26,4 +26,5 @@ public class DareList {
 		
 		return tempDares.get(rand.nextInt(tempDares.size()));
 	}
+	
 }
