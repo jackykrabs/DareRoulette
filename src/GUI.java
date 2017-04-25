@@ -1,30 +1,24 @@
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-
-import java.awt.BorderLayout;
-import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JRadioButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class GUI {
 
 	private JFrame frame;
+	private String customDare;
 
 	/**
 	 * Launch the application.
@@ -62,31 +56,71 @@ public class GUI {
 		can be pressed at once*/
 		ButtonGroup difficulty = new ButtonGroup();
 		JRadioButton rdbtnMild = new JRadioButton("Mild");		
+		//mild is the default selection
+		rdbtnMild.setSelected(true);
+		rdbtnMild.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DareRoulette.setDifficulty(1);
+				System.out.println(DareRoulette.getDifficulty());
+			}
+		});
 		JRadioButton rdbtnModerate = new JRadioButton("Moderate");		
+		rdbtnModerate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DareRoulette.setDifficulty(2);
+				System.out.println(DareRoulette.getDifficulty());
+			}
+		});
 		JRadioButton rdbtnSpicy = new JRadioButton("Spicy");
+		rdbtnSpicy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DareRoulette.setDifficulty(3);
+				System.out.println(DareRoulette.getDifficulty());
+			}
+		});
 		
 		//adds all the buttons to the group
 		difficulty.add(rdbtnMild);
 		difficulty.add(rdbtnModerate);
 		difficulty.add(rdbtnSpicy);
 		
+		//difficulty label
 		JLabel lblDifficulty = new JLabel("Difficulty");
 		lblDifficulty.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		//main header label "dare roulette"
 		JLabel lblDareRoulette = new JLabel("Dare Roulette");
 		lblDareRoulette.setForeground(Color.BLACK);
 		lblDareRoulette.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
+		//options label
 		JLabel lblOptions = new JLabel("Options");
 		lblOptions.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		//when they press the adult button, it changes the setting of the game
 		JRadioButton rdbtnAdult = new JRadioButton("Adult");
+		rdbtnAdult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DareRoulette.setAdult(!DareRoulette.isAdult());
+				System.out.println(DareRoulette.isAdult());
+			}
+		});
 		
+		//allows you to create a custom dare
 		JButton btnCreateDare = new JButton("Create Dare");
+		btnCreateDare.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DareRoulette.customDare(JOptionPane.showInputDialog("Come up with a dare!"));
+			}
+		});
 		
+		//resets all settings
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DareRoulette.reset();
+				rdbtnAdult.setSelected(false);
+				rdbtnMild.setSelected(true);
 			}
 		});
 		
