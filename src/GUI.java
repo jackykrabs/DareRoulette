@@ -19,6 +19,8 @@ public class GUI {
 
 	private JFrame frame;
 	private String customDare;
+	
+	DareRoulette dR;
 
 	/**
 	 * Launch the application.
@@ -40,6 +42,7 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
+		dR = new DareRoulette(false, 1);
 		initialize();
 	}
 
@@ -60,22 +63,22 @@ public class GUI {
 		rdbtnMild.setSelected(true);
 		rdbtnMild.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DareRoulette.setDifficulty(1);
-				System.out.println(DareRoulette.getDifficulty());
+				dR.setDifficulty(1);
+				System.out.println(dR.getDifficulty());
 			}
 		});
 		JRadioButton rdbtnModerate = new JRadioButton("Moderate");		
 		rdbtnModerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DareRoulette.setDifficulty(2);
-				System.out.println(DareRoulette.getDifficulty());
+				dR.setDifficulty(2);
+				System.out.println(dR.getDifficulty());
 			}
 		});
 		JRadioButton rdbtnSpicy = new JRadioButton("Spicy");
 		rdbtnSpicy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DareRoulette.setDifficulty(3);
-				System.out.println(DareRoulette.getDifficulty());
+				dR.setDifficulty(3);
+				System.out.println(dR.getDifficulty());
 			}
 		});
 		
@@ -101,8 +104,8 @@ public class GUI {
 		JRadioButton rdbtnAdult = new JRadioButton("Adult");
 		rdbtnAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DareRoulette.setAdult(!DareRoulette.isAdult());
-				System.out.println(DareRoulette.isAdult());
+				dR.setAdult(!dR.isAdult());
+				System.out.println(dR.isAdult());
 			}
 		});
 		
@@ -110,7 +113,8 @@ public class GUI {
 		JButton btnCreateDare = new JButton("Create Dare");
 		btnCreateDare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DareRoulette.customDare(JOptionPane.showInputDialog("Come up with a dare!"));
+				String o = JOptionPane.showInputDialog("Come up with a dare!");
+				dR.customDare(o);
 			}
 		});
 		
@@ -118,7 +122,7 @@ public class GUI {
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DareRoulette.reset();
+				dR.reset();
 				rdbtnAdult.setSelected(false);
 				rdbtnMild.setSelected(true);
 			}
