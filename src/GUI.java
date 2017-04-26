@@ -105,7 +105,6 @@ public class GUI {
 		rdbtnAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dR.setAdult(!dR.isAdult());
-				System.out.println(dR.isAdult());
 			}
 		});
 		

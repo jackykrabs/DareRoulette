@@ -30,6 +30,10 @@ public class DareRoulette {
 		return adult;
 	}
 	
+	//get a dare given the criteria boiiii
+	public Dare retrieveDare(){
+		return myDl.retrieveDare(difficulty, adult);
+	}
 	//returns the game's current difficulty
 	public int getDifficulty() {
 		return difficulty;

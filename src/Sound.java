@@ -1,5 +1,5 @@
 /*
- * Class to import music and sounds into the game into the game
+ * Class to import music and sounds into the game (originally used for Jack Allen Asteroids)
  */
 
 import java.io.File;
