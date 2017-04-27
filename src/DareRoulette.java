@@ -8,6 +8,7 @@ public class DareRoulette {
 	
 	DareList myDl;
 	
+	private boolean custom;
 	private boolean adult;
 	//1 = mild, 2 = moderate, 3 = spicy
 	private int difficulty;
@@ -17,6 +18,18 @@ public class DareRoulette {
 		this.adult = adult;
 		this.difficulty = difficulty;
 		myDl = new DareList();
+		custom = false;
+	}
+	
+	//returns whether or not the game is in custom mode
+	public boolean isCustom() {
+		return custom;
+	}
+	
+	//sets the game to be in or not in custom mode
+	public boolean setCustom(boolean o) {
+		custom = o;
+		return custom;
 	}
 	
 	//returns whether or not the game is in adult mode
@@ -32,7 +45,7 @@ public class DareRoulette {
 	
 	//get a dare given the criteria boiiii
 	public Dare retrieveDare(){
-		return myDl.retrieveDare(difficulty, adult);
+		return myDl.retrieveDare(difficulty, adult, custom);
 	}
 	
 	//returns the game's current difficulty
@@ -58,7 +71,9 @@ public class DareRoulette {
 	//resets all settings
 	public void reset() {
 		adult = false;
+		custom = false;
 		difficulty = 1;
+		//removes custom dares
 		for (int i = myDl.dares.size() - 1; i >= 0; i--) {
 			if (myDl.dares.get(i).isCustom()) {
 				myDl.removeDare(myDl.dares.get(i));

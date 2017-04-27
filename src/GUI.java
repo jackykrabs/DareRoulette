@@ -117,6 +117,14 @@ public class GUI {
 			}
 		});
 		
+		JRadioButton rdbtnCustomDaresOnly = new JRadioButton("Custom Dares Only");
+		rdbtnCustomDaresOnly.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dR.setCustom(!dR.isCustom());	
+				System.out.println(dR.isCustom());
+			}
+		});
+		
 		//resets all settings
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
@@ -124,13 +132,7 @@ public class GUI {
 				dR.reset();
 				rdbtnAdult.setSelected(false);
 				rdbtnMild.setSelected(true);
-			}
-		});
-		
-		JRadioButton rdbtnCustomDaresOnly = new JRadioButton("Custom Dares Only");
-		rdbtnCustomDaresOnly.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+				rdbtnCustomDaresOnly.setSelected(false);
 			}
 		});
 		
@@ -142,7 +144,12 @@ public class GUI {
 		btnGenerateDare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dare current = dR.retrieveDare();
-				txtpnDare.setText(current.getPhrase());
+				if (current == null) {
+					txtpnDare.setText("You can't use only custom dares if you haven't created any!"
+							+ "Click the 'Create Dare' button to start making up dares!");
+				} else {
+					txtpnDare.setText(current.getPhrase());
+				}
 			}
 		});
 		

@@ -12,14 +12,24 @@ public class DareList {
 	}
 	
 	//method to return a random dare given the parameters
-	public Dare retrieveDare(int difficulty, boolean isAdult){
+	public Dare retrieveDare(int difficulty, boolean isAdult, boolean isCustom){
 		
 		//go through the full list of dares and pull out the ones that meet the specific criteria
 		ArrayList<Dare> tempDares = new ArrayList<Dare>();
 		for (Dare currentDare: dares) {
-			if(currentDare.getAdult() == isAdult && currentDare.getDifficulty() == difficulty){
-				tempDares.add(currentDare);
+			if (isCustom) {
+				if(currentDare.isCustom() == isCustom){
+					tempDares.add(currentDare);
+				}
+			} else {
+				if(currentDare.getAdult() == isAdult && currentDare.getDifficulty() == difficulty){
+					tempDares.add(currentDare);
+				}
 			}
+		}
+		
+		if (tempDares.size() == 0) {
+			return null;
 		}
 		
 		//return a random dare that fits the criteria
