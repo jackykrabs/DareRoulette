@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
@@ -148,7 +149,13 @@ public class GUI {
 					txtpnDare.setText("You can't use only custom dares if you haven't created any!"
 							+ "Click the 'Create Dare' button to start making up dares!");
 				} else {
-					txtpnDare.setText(current.getPhrase());
+					//now time to determine if the dare gets returned
+					Random rand = new Random();
+					int probability = current.getDifficulty() + 1;
+					if(rand.nextInt(probability) == 0)
+						txtpnDare.setText(current.getPhrase());
+					else
+						txtpnDare.setText("No dare returned...you got lucky!");
 				}
 			}
 		});
