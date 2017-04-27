@@ -20,7 +20,7 @@ public class GUI {
 
 	private JFrame frame;
 	private String customDare;
-	Sound bang, click;
+	Sound bang, click, laugh, oh;
 	DareRoulette dR;
 
 	/**
@@ -46,6 +46,8 @@ public class GUI {
 		dR = new DareRoulette(false, 1);
 		bang = new Sound("resources/shot.wav",false,0f);
 		click = new Sound("resources/click.wav",false,0f);
+		laugh = new Sound("resources/laugh.wav",false,0f);
+		oh = new Sound("resources/oh.wav",false,0f);
 		initialize();
 	}
 
@@ -107,6 +109,12 @@ public class GUI {
 		JRadioButton rdbtnAdult = new JRadioButton("Adult");
 		rdbtnAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//if turning on adult, chuckle immaturely
+				if(!dR.isAdult())
+					laugh.playSound();
+				//if turning it off, be dissapointed
+				else
+					oh.playSound();
 				dR.setAdult(!dR.isAdult());
 			}
 		});
@@ -156,8 +164,8 @@ public class GUI {
 				} else {
 					//now time to determine if the dare gets returned
 					Random rand = new Random();
-					int probability = current.getDifficulty() + 1;
-					if(rand.nextInt(probability) == 0){
+					//int probability = current.getDifficulty() + 1;
+					if(rand.nextInt(2) == 0){
 						bang.playSound();
 						txtpnDare.setText(current.getPhrase());
 					}
