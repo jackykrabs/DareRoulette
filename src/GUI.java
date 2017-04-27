@@ -118,6 +118,7 @@ public class GUI {
 			}
 		});
 		
+		//allows you to set the game to be in or not in custom mode
 		JRadioButton rdbtnCustomDaresOnly = new JRadioButton("Custom Dares Only");
 		rdbtnCustomDaresOnly.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -137,10 +138,12 @@ public class GUI {
 			}
 		});
 		
+		//creates the text pane where dares will be displayed
 		JTextPane txtpnDare = new JTextPane();
 		txtpnDare.setBackground(Color.LIGHT_GRAY);
 		txtpnDare.setText("No dare yet!");
 		
+		//allows you to generate a dare based on the settings selected in the game
 		JButton btnGenerateDare = new JButton("Generate Dare");
 		btnGenerateDare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -160,6 +163,8 @@ public class GUI {
 			}
 		});
 		
+		/* I don't know what this stuff is, it's automatically generated. looks smart tho.
+		It seems to create the layout */
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

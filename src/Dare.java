@@ -6,6 +6,7 @@ public class Dare {
 	boolean adult;
 	boolean custom;
 	
+	//dare object. accepts a phrase, the difficulty, and if the game is in adult and custom mode
 	public Dare(String phrase, int difficulty, boolean adult, boolean custom){
 		this.phrase = phrase;
 		this.difficulty = difficulty;
