@@ -34,6 +34,7 @@ public class DareRoulette {
 	public Dare retrieveDare(){
 		return myDl.retrieveDare(difficulty, adult);
 	}
+	
 	//returns the game's current difficulty
 	public int getDifficulty() {
 		return difficulty;

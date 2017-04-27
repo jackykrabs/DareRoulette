@@ -128,16 +128,24 @@ public class GUI {
 		});
 		
 		JRadioButton rdbtnCustomDaresOnly = new JRadioButton("Custom Dares Only");
-		
-		JButton btnGenerateDare = new JButton("Generate Dare");
-		btnGenerateDare.addActionListener(new ActionListener() {
+		rdbtnCustomDaresOnly.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
 		JTextPane txtpnDare = new JTextPane();
 		txtpnDare.setBackground(Color.LIGHT_GRAY);
 		txtpnDare.setText("No dare yet!");
+		
+		JButton btnGenerateDare = new JButton("Generate Dare");
+		btnGenerateDare.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dare current = dR.retrieveDare();
+				txtpnDare.setText(current.getPhrase());
+			}
+		});
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
