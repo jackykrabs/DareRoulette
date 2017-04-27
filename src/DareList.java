@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Random;
-
+/*
+class to encapsulate a collection of dares, and provide a method for
+for retrieving them
+NOTE: Custom Dares are always all pooled together, regardless of 
+difficulty or adult content.  
+ * */
 public class DareList {
 
 	ArrayList<Dare> dares;
@@ -54,6 +59,7 @@ public class DareList {
 	}
 	
 	//method to initialize the dare list with the default dares
+	//because we're too lazy to make a .json file and parser
 	private void initDares(){
 		addDare("Tell the most embarassing thing that's happened to you in the last week.", 1, false, false);
 		addDare("Take a Shot.", 2, true, false);

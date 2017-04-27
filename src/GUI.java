@@ -20,7 +20,7 @@ public class GUI {
 
 	private JFrame frame;
 	private String customDare;
-	
+	Sound bang, click;
 	DareRoulette dR;
 
 	/**
@@ -44,6 +44,8 @@ public class GUI {
 	 */
 	public GUI() {
 		dR = new DareRoulette(false, 1);
+		bang = new Sound("resources/shot.wav",false,0f);
+		click = new Sound("resources/click.wav",false,0f);
 		initialize();
 	}
 
@@ -155,10 +157,14 @@ public class GUI {
 					//now time to determine if the dare gets returned
 					Random rand = new Random();
 					int probability = current.getDifficulty() + 1;
-					if(rand.nextInt(probability) == 0)
+					if(rand.nextInt(probability) == 0){
+						bang.playSound();
 						txtpnDare.setText(current.getPhrase());
-					else
+					}
+					else{
+						click.playSound();
 						txtpnDare.setText("No dare returned...you got lucky!");
+					}
 				}
 			}
 		});
