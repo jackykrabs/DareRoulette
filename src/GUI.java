@@ -165,11 +165,10 @@ public class GUI {
 					//now time to determine if the dare gets returned
 					Random rand = new Random();
 					//int probability = current.getDifficulty() + 1;
-					if(rand.nextInt(2) == 0){
+					if(rand.nextInt(2) >= 1) {
 						bang.playSound();
 						txtpnDare.setText(current.getPhrase());
-					}
-					else{
+					} else {
 						click.playSound();
 						txtpnDare.setText("No dare returned...you got lucky!");
 					}
