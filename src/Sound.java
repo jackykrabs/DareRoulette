@@ -16,6 +16,7 @@ public class Sound {
 	Clip clip;
 	String fileName;
 	boolean loop;
+	static boolean muted;
 	
 	//constructor takes filename (.wav), if the sound loops, and the value of which
 	//you want to modify the volume (default is 0)
@@ -25,8 +26,17 @@ public class Sound {
 		this.changer = changer;
 	}
 	
-	//plays the sound
+	//setter for muting the game
+	public static boolean setMuted(boolean o) {
+		muted = o;
+		return muted;
+	}
+	
+	//plays the sound unless the game is muted
 	public synchronized void playSound() {
+		if (muted) {
+			return;
+		}
 		  new Thread(new Runnable() {
 		    public void run() {
 		      try {

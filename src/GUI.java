@@ -137,6 +137,14 @@ public class GUI {
 			}
 		});
 		
+		//mutes the audio
+		JRadioButton rdbtnMute = new JRadioButton("Mute");
+			rdbtnMute.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Sound.setMuted(!Sound.muted);
+			}
+		});
+		
 		//resets all settings
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
@@ -145,6 +153,7 @@ public class GUI {
 				rdbtnAdult.setSelected(false);
 				rdbtnMild.setSelected(true);
 				rdbtnCustomDaresOnly.setSelected(false);
+				rdbtnMute.setSelected(false);
 			}
 		});
 		
@@ -178,6 +187,7 @@ public class GUI {
 		
 		/* I don't know what this stuff is, it's automatically generated. looks smart tho.
 		It seems to create the layout */
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -196,14 +206,15 @@ public class GUI {
 									.addComponent(btnReset, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(btnCreateDare, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(rdbtnCustomDaresOnly, Alignment.LEADING)))
-							.addPreferredGap(ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
 									.addGap(52))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(btnGenerateDare)
-									.addGap(94))))
+									.addGap(94))
+								.addComponent(rdbtnMute)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(108)
 							.addComponent(lblDareRoulette)))
@@ -239,7 +250,10 @@ public class GUI {
 							.addComponent(btnGenerateDare)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addContainerGap(25, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(238, Short.MAX_VALUE)
+					.addComponent(rdbtnMute))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

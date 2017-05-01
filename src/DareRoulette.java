@@ -70,6 +70,7 @@ public class DareRoulette {
 	
 	//resets all settings
 	public void reset() {
+		Sound.setMuted(false);
 		adult = false;
 		custom = false;
 		difficulty = 1;
