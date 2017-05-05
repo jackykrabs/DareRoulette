@@ -27,7 +27,7 @@ public class DareList {
 					tempDares.add(currentDare);
 				}
 			} else {
-				if(currentDare.getAdult() == isAdult && currentDare.getDifficulty() == difficulty){
+				if(currentDare.getAdult() == isAdult && currentDare.getDifficulty() <= difficulty){
 					tempDares.add(currentDare);
 				}
 			}

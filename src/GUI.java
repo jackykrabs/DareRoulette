@@ -58,6 +58,8 @@ public class GUI {
 		//creates the gui and sets the size
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
+		frame.setName("Dare Roulette");
+		frame.setTitle("Dare Roulette");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*creates the button group and the buttons. a button group means that only one
@@ -185,6 +187,33 @@ public class GUI {
 			}
 		});
 		
+		JButton btnGameInfo = new JButton("Game Info");
+		btnGameInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String o = "<html><h1>Dare Roulette</h1>This game was created in Mr. Sasser's AP Computer Science <br>class";
+				o += " by Jack Allen and Sam Speake.<br>";
+				o += "<br>";
+				o += "The game is a combination of the games Roulette and Truth or Dare.";
+				o += " Instead <br>of having a chance of getting shot, you have a chance of getting a Dare. <br>";
+				o += "<br>";
+				o += "The game has two settings which effect what kind of dares you'll get. <br><br>";
+				o += "~The first setting is the difficulty. You can choose between Mild, Moderate, <br>and Spicy."
+						+ " Mild dares will be less raunchy, compared to Moderate, and Moderate <br>dares "
+						+ "will be less raunchy, compared to Spicy dares. <br>"
+						+ "Notice: Selecting Moderate also gives Mild dares, and Spicy also gives<br> Moderate "
+						+ "and Mild dares.<br><br>";
+				o += "~The second setting is the Adult option. When selected, the dares generated <br>"
+						+ "will be far more raunchy than when it is unselected. The adult setting should <br>"
+						+ "only be turned on for players who are 18 years or older.<br><br>";
+				o += "You can also create your own dares by pressing the 'Create Dare' button. <br>Once you've"
+						+ " got at least one created, you can select 'Custom Dares Only'<br> to play with"
+						+ " only the dares that you've created.<br><br>";
+				o += "The 'Reset' and 'Mute' buttons are fairly self explanatory, Reset resets <br>all settings "
+						+ "and Mute mutes the game sounds.<html>";
+				JOptionPane.showMessageDialog(btnGameInfo, o);
+			}
+		});
+		
 		/* I don't know what this stuff is, it's automatically generated. looks smart tho.
 		It seems to create the layout */
 		
@@ -192,40 +221,42 @@ public class GUI {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnGameInfo, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(rdbtnAdult)
+						.addComponent(lblOptions, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+						.addComponent(rdbtnSpicy)
+						.addComponent(lblDifficulty)
+						.addComponent(rdbtnMild)
+						.addComponent(rdbtnModerate)
+						.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnCreateDare, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(rdbtnCustomDaresOnly, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(rdbtnAdult)
-								.addComponent(lblOptions, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rdbtnSpicy)
-								.addComponent(lblDifficulty)
-								.addComponent(rdbtnMild)
-								.addComponent(rdbtnModerate)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(btnReset, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnCreateDare, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(rdbtnCustomDaresOnly, Alignment.LEADING)))
-							.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-									.addGap(52))
+									.addComponent(lblDareRoulette)
+									.addGap(196))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(btnGenerateDare)
-									.addGap(94))
-								.addComponent(rdbtnMute)))
+									.addGap(132))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(108)
-							.addComponent(lblDareRoulette)))
-					.addContainerGap())
+							.addGap(53)
+							.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(234)
+							.addComponent(rdbtnMute)))
+					.addGap(490))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(35)
+							.addContainerGap(24, Short.MAX_VALUE)
 							.addComponent(lblDifficulty)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(rdbtnMild)
@@ -246,14 +277,16 @@ public class GUI {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblDareRoulette)
-							.addGap(17)
+							.addGap(18)
 							.addComponent(btnGenerateDare)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(25, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(238, Short.MAX_VALUE)
-					.addComponent(rdbtnMute))
+							.addComponent(txtpnDare, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)))
+					.addGap(7)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnGameInfo)
+							.addGap(11))
+						.addComponent(rdbtnMute)))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
